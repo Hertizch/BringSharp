@@ -35,18 +35,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enums\DisplayLanguage.cs" />
+    <Compile Include="JsonQueryClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tracking\ConsignmentData\Consignment.cs" />
-    <Compile Include="Tracking\ConsignmentData\ConsignmentSet.cs" />
-    <Compile Include="Tracking\ConsignmentData\EventSet.cs" />
-    <Compile Include="Tracking\ConsignmentData\PackageSet.cs" />
-    <Compile Include="Tracking\ConsignmentData\RecipientAddress.cs" />
-    <Compile Include="Tracking\ConsignmentData\RecipientAddress2.cs" />
-    <Compile Include="Tracking\ConsignmentData\RecipientHandlingAddress.cs" />
-    <Compile Include="Tracking\ConsignmentData\RecipientHandlingAddress2.cs" />
-    <Compile Include="Tracking\ConsignmentData\RecipientSignature.cs" />
-    <Compile Include="Tracking\ConsignmentData\SenderAddress.cs" />
-    <Compile Include="Tracking\ConsignmentData\SenderAddress2.cs" />
+    <Compile Include="Tracking\Consignment\Consignment.cs" />
+    <Compile Include="Tracking\Consignment\ConsignmentSet.cs" />
+    <Compile Include="Tracking\Consignment\EventSet.cs" />
+    <Compile Include="Tracking\Consignment\PackageSet.cs" />
+    <Compile Include="Tracking\Consignment\RecipientAddress.cs" />
+    <Compile Include="Tracking\Consignment\RecipientAddress2.cs" />
+    <Compile Include="Tracking\Consignment\RecipientHandlingAddress.cs" />
+    <Compile Include="Tracking\Consignment\RecipientHandlingAddress2.cs" />
+    <Compile Include="Tracking\Consignment\RecipientSignature.cs" />
+    <Compile Include="Tracking\Consignment\SenderAddress.cs" />
+    <Compile Include="Tracking\Consignment\SenderAddress2.cs" />
     <Compile Include="Tracking\Tracking.cs" />
   </ItemGroup>
   <ItemGroup>

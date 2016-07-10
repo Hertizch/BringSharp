@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BringSharp.Tracking.ConsignmentData
+namespace BringSharp.Tracking.Consignment
 {
     public class Consignment
     {
