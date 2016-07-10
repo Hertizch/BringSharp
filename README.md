@@ -12,7 +12,7 @@ var tracking = new Tracking();
 await tracking.TrackByPackageNumber("trackingNumber");
 
 if (tracking.Success())
-  {
+{
     var results = tracking.Consignment.ConsignmentSet[0];
 
     Console.WriteLine($"Sender: {results.SenderName}");
@@ -24,6 +24,7 @@ if (tracking.Success())
 
     foreach (var trackingEvent in eventResults)
     {
-      Console.WriteLine($"{trackingEvent.DisplayDate} {trackingEvent.DisplayTime}: {trackingEvent.Description}");
+        Console.WriteLine($"{trackingEvent.DisplayDate} {trackingEvent.DisplayTime}: {trackingEvent.Description}");
     }
+}
 ```
