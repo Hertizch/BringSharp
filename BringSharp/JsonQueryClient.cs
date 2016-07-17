@@ -19,9 +19,10 @@ namespace BringSharp
         {
             using (var httpClient = new HttpClient())
             {
-                var response = await httpClient.GetAsync(new Uri(url));
-
-                return response.StatusCode;
+                using (var response = await httpClient.GetAsync(new Uri(url)))
+                {
+                    return response.StatusCode;
+                }
             }
         }
     }

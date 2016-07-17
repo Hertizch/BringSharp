@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BringSharp.Enums;
 using Newtonsoft.Json;
@@ -9,9 +9,9 @@ namespace BringSharp.Tracking
 {
     public class Tracking
     {
-        private DisplayLanguage DisplayLanguage { get; set; }
-        private string TrackingNumber { get; set; }
         public Consignment.Consignment Consignment { get; set; }
+
+        private DisplayLanguage DisplayLanguage { get; set; }
         private HttpStatusCode _httpStatusCode;
         private string ResponseUrl { get; set; }
 
@@ -24,23 +24,19 @@ namespace BringSharp.Tracking
         public async Task TrackByTrackingNumber(string trackingNumber, DisplayLanguage displayLanguage = DisplayLanguage.En)
         {
             // Set properties
-            TrackingNumber = trackingNumber;
             DisplayLanguage = displayLanguage;
-            ResponseUrl = $"https://tracking.bring.com/tracking.json?q={TrackingNumber}&lang={DisplayLanguage}";
+            ResponseUrl = $"https://tracking.bring.com/tracking.json?q={trackingNumber}&lang={DisplayLanguage}";
 
             // Check if TrackingNumber property has been set - Throw exception if not set
-            if (string.IsNullOrEmpty(TrackingNumber))
-                throw new Exception("Provide value on parameter trackingNumber");
+            if (string.IsNullOrEmpty(trackingNumber))
+                throw new ArgumentNullException(trackingNumber, "Provide value on parameter");
 
             // Check for valid response
             _httpStatusCode = await JsonQueryClient.GetResponseStatusCode(ResponseUrl);
 
             // If response is not OK
             if (_httpStatusCode != HttpStatusCode.OK)
-            {
-                Debug.WriteLine($"Could not query Bring API response - Query response code: {(int)_httpStatusCode} {_httpStatusCode}");
-                return;
-            }
+                throw new HttpRequestException($"Could not query Bring API response - Query response code: {(int)_httpStatusCode} {_httpStatusCode}");
 
             // Get json response
             var json = await JsonQueryClient.GetResponse(ResponseUrl);
