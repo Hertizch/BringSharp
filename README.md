@@ -4,9 +4,13 @@ A simple web API wrapper library for tracking packages trough Bring.
 ## Compatibility
 Windows Desktop, Windows Phone 8.1, iOS and Android. Requires .NET framework 4.5 or later.
 
+## Changelog
+### 1.0.0
+- Initial commit.
+
 ## Usage
-Example usage:
-```
+Example tracking:
+```C#
 var tracking = new Tracking();
 
 await tracking.TrackByPackageNumber("trackingNumber");
