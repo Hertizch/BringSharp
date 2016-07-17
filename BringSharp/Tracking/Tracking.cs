@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BringSharp.Enums;
 using Newtonsoft.Json;
@@ -43,6 +44,9 @@ namespace BringSharp.Tracking
 
             // Deserialize the json response
             Consignment = JsonConvert.DeserializeObject<Consignment.Consignment>(json);
+
+            // Remove unwanted HTML tags i descriptions
+            RemoveInlineHtml();
         }
 
         /// <summary>
@@ -52,6 +56,21 @@ namespace BringSharp.Tracking
         public bool Success()
         {
             return (_httpStatusCode == HttpStatusCode.OK && Consignment != null && Consignment.ConsignmentSet.Count > 0);
+        }
+
+        /// <summary>
+        /// Removes unwanted HTML code in properties.
+        /// </summary>
+        private void RemoveInlineHtml()
+        {
+            foreach (var eventSet in Consignment.ConsignmentSet[0].PackageSet[0].EventSet)
+            {
+                var regex = Regex.Match(eventSet.Description, "(.*)<a .*>(.*)<\\/a>");
+                if (!regex.Success) continue;
+
+                var description = $"{regex.Groups[1].Value}{regex.Groups[2].Value}";
+                eventSet.Description = description;
+            }
         }
     }
 }
