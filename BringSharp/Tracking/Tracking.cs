@@ -37,7 +37,7 @@ namespace BringSharp.Tracking
 
             // If response is not OK
             if (_httpStatusCode != HttpStatusCode.OK)
-                throw new HttpRequestException($"Could not query Bring API response - Query response code: {(int)_httpStatusCode} {_httpStatusCode}");
+                throw new HttpRequestException($"Could not query Bring API response - Query response code: {(int)_httpStatusCode} -- {_httpStatusCode}");
 
             // Get json response
             var json = await JsonQueryClient.GetResponse(ResponseUrl);
@@ -46,7 +46,8 @@ namespace BringSharp.Tracking
             Consignment = JsonConvert.DeserializeObject<Consignment.Consignment>(json);
 
             // Remove unwanted HTML tags i descriptions
-            RemoveInlineHtml();
+            if (Success())
+                RemoveInlineHtml();
         }
 
         /// <summary>
