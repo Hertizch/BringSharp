@@ -34,9 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\AttributeConverter.cs" />
+    <Compile Include="Converters\UnitConverter.cs" />
     <Compile Include="Details\HandlingRecipient.cs" />
     <Compile Include="Details\Recipient.cs" />
+    <Compile Include="Enums\DisplayDimension.cs" />
     <Compile Include="Enums\DisplayLanguage.cs" />
+    <Compile Include="Enums\PropertyName.cs" />
+    <Compile Include="Extensions\ApiPropertyName.cs" />
     <Compile Include="JsonQueryClient.cs" />
     <Compile Include="Details\Events.cs" />
     <Compile Include="Details\Package.cs" />

@@ -10,20 +10,14 @@ namespace BringSharp
         internal static async Task<string> GetResponse(string url)
         {
             using (var httpClient = new HttpClient())
-            {
                 return await httpClient.GetStringAsync(new Uri(url));
-            }
         }
 
         internal static async Task<HttpStatusCode> GetResponseStatusCode(string url)
         {
             using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync(new Uri(url)))
-                {
-                    return response.StatusCode;
-                }
-            }
+            using (var response = await httpClient.GetAsync(new Uri(url)))
+                return response.StatusCode;
         }
     }
 }

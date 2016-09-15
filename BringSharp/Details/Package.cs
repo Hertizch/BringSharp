@@ -5,27 +5,27 @@ namespace BringSharp.Details
     public struct Package
     {
         /// <summary>
-        /// Gets the packages physical length (in cm)
+        /// Gets the packages physical length (DisplayDimension.Metric == Centimeters (cm), DisplayDimension.Imperial == Inches (inch))
         /// </summary>
         public readonly int Length;
 
         /// <summary>
-        /// Gets the packages physical width (in cm)
+        /// Gets the packages physical width (DisplayDimension.Metric == Centimeters (cm), DisplayDimension.Imperial == Inches (inch))
         /// </summary>
         public readonly int Width;
 
         /// <summary>
-        /// Gets the packages physical height (in cm)
+        /// Gets the packages physical height (DisplayDimension.Metric == Centimeters (cm), DisplayDimension.Imperial == Inches (inch))
         /// </summary>
         public readonly int Height;
 
         /// <summary>
-        /// Gets the packages physical volume (in dm3)
+        /// Gets the packages physical volume (in Cubic Decimeter (dm3)/Liter (l))
         /// </summary>
         public readonly double Volume;
 
         /// <summary>
-        /// Gets the packages physical weight (in kgs)
+        /// Gets the packages physical weight (DisplayDimension.Metric == Kilograms (kg), DisplayDimension.Imperial == Punds (pound))
         /// </summary>
         public readonly double Weight;
 

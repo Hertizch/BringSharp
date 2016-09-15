@@ -8,16 +8,25 @@ namespace BringSharpExamples
     {
         static void Main(string[] args)
         {
-            Get();
+            GetTrackingDetails();
 
             Console.ReadKey();
         }
 
-        private static async void Get()
-        {
-            var packageTracking = new PackageTracking();
+        private static PackageTracking _packageTracking;
+        private static string _trackingNumber = "TESTPACKAGE-AT-PICKUPPOINT";
 
-            var packageDetails = await packageTracking.GetPackageDetails("CT144612052NO", DisplayLanguage.En); // TESTPACKAGE-AT-PICKUPPOINT
+        private static async void GetTrackingDetails()
+        {
+            _packageTracking = new PackageTracking();
+
+            var packageDetails = await _packageTracking.GetPackageDetails(_trackingNumber, DisplayLanguage.En, DisplayDimension.Metric); // Testing number: TESTPACKAGE-AT-PICKUPPOINT
+
+            if (!_packageTracking.Success)
+            {
+                Console.WriteLine("Package tracking unsuccessfull!");
+                return;
+            }
 
             Console.WriteLine($"Sender Name: {packageDetails.Sender.Name}");
             Console.WriteLine($"Product Name: {packageDetails.Product.Name}");
